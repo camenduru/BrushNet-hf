@@ -12,6 +12,8 @@ import random
 
 import spaces
 
+os.system("pip install gradio==3.50.0")
+
 mobile_sam = sam_model_registry['vit_h'](checkpoint='data/ckpt/sam_vit_h_4b8939.pth')
 mobile_sam.eval()
 mobile_predictor = SamPredictor(mobile_sam)
