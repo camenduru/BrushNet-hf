@@ -12,7 +12,7 @@ import random
 
 import spaces
 
-mobile_sam = sam_model_registry['vit_h'](checkpoint='data/ckpt/sam_vit_h_4b8939.pth').to("cuda")
+mobile_sam = sam_model_registry['vit_h'](checkpoint='data/ckpt/sam_vit_h_4b8939.pth')
 mobile_sam.eval()
 mobile_predictor = SamPredictor(mobile_sam)
 colors = [(255, 0, 0), (0, 255, 0)]
