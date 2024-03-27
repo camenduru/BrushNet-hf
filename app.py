@@ -49,7 +49,7 @@ pipe.scheduler = UniPCMultistepScheduler.from_config(pipe.scheduler.config)
 # remove following line if xformers is not installed or when using Torch 2.0.
 # pipe.enable_xformers_memory_efficient_attention()
 # memory optimization.
-pipe.enable_model_cpu_offload()
+# pipe.enable_model_cpu_offload()
 
 def resize_image(input_image, resolution):
     H, W, C = input_image.shape
