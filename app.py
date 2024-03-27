@@ -1,6 +1,5 @@
 ##!/usr/bin/python3
 # -*- coding: utf-8 -*-
-import gradio as gr
 import os
 import cv2
 from PIL import Image
@@ -16,6 +15,8 @@ print("Installing correct gradio version...")
 os.system("pip uninstall -y gradio")
 os.system("pip install gradio==3.50.0")
 print("Installing Finished!")
+
+import gradio as gr
 
 mobile_sam = sam_model_registry['vit_h'](checkpoint='data/ckpt/sam_vit_h_4b8939.pth')
 mobile_sam.eval()
