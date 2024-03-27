@@ -115,7 +115,7 @@ def process(input_image,
     init_image = Image.fromarray(masked_image.astype(np.uint8)).convert("RGB")
     mask_image = Image.fromarray(original_mask.astype(np.uint8)).convert("RGB")
 
-    generator = torch.Generator("cuda").manual_seed(random.randint(0,2147483647) if randomize_seed else seed)
+    generator = torch.Generator().manual_seed(random.randint(0,2147483647) if randomize_seed else seed)
 
     image = pipe(
         [prompt]*2, 
