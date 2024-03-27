@@ -10,6 +10,8 @@ import torch
 from diffusers import StableDiffusionBrushNetPipeline, BrushNetModel, UniPCMultistepScheduler
 import random
 
+import spaces
+
 mobile_sam = sam_model_registry['vit_h'](checkpoint='data/ckpt/sam_vit_h_4b8939.pth').to("cuda")
 mobile_sam.eval()
 mobile_predictor = SamPredictor(mobile_sam)
@@ -61,7 +63,7 @@ def resize_image(input_image, resolution):
     img = cv2.resize(input_image, (W, H), interpolation=cv2.INTER_LANCZOS4 if k > 1 else cv2.INTER_AREA)
     return img
 
-
+@spaces.GPU
 def process(input_image, 
     original_image, 
     original_mask, 
