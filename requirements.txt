@@ -3,6 +3,7 @@ torch==1.12.1+cu116
 torchvision==0.13.1+cu116
 torchaudio==0.12.1
 transformers>=4.25.1
+gradio==3.50.2
 ftfy
 tensorboard
 datasets
@@ -15,6 +16,5 @@ hpsv2
 torchmetrics
 open-clip-torch
 clip
-gradio==3.40.0
 segment_anything
 git+https://github.com/TencentARC/BrushNet.git
