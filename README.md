@@ -1,3 +1,15 @@
+---
+title: BrushNet
+emoji: 🔥
+colorFrom: yellow
+colorTo: indigo
+sdk: gradio
+sdk_version: 4.23.0
+app_file: app.py
+pinned: false
+license: apache-2.0
+---
+
 # BrushNet
 
 This repository contains the gradio demo of the paper "BrushNet: A Plug-and-Play Image Inpainting Model with Decomposed Dual-Branch Diffusion"
