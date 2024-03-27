@@ -3,8 +3,8 @@ title: BrushNet
 emoji: ⚡
 colorFrom: yellow
 colorTo: indigo
-sdk_version: 3.50.0
 sdk: gradio
+sdk_version: 3.50.2
 python_version: 3.9
 app_file: app.py
 pinned: false
