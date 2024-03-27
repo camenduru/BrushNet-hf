@@ -127,8 +127,9 @@ def process(input_image,
             raise gr.Error('Using blurred blending with control strength less than 1.0 is not allowed')
         blended_image=[]
         # blur, you can adjust the parameters for better performance
-        mask = cv2.GaussianBlur(mask*255, (21, 21), 0)/255
-        mask = mask[:,:,np.newaxis]
+        mask_blurred = cv2.GaussianBlur(mask*255, (21, 21), 0)/255
+        mask_blurred = mask_blurred[:,:,np.newaxis]
+        mask = 1-(1-mask) * (1-mask_blurred)
         for image_i in image:
             image_np=np.array(image_i)
             image_pasted=original_image * (1-mask) + image_np*mask
