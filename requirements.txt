@@ -15,6 +15,6 @@ hpsv2
 torchmetrics
 open-clip-torch
 clip
-gradio==3.50.0
+gradio==3.40.0
 segment_anything
 git+https://github.com/TencentARC/BrushNet.git
