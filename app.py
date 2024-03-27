@@ -25,8 +25,14 @@ markers = [1, 5]
 
 # - - - - - examples  - - - - -  #
 image_examples = [
-    ["examples/brushnet/src/test_image.jpg", "A beautiful cake on the table", "examples/brushnet/src/test_mask.jpg", 0, []],
+    ["examples/brushnet/src/test_image.jpg", "A beautiful cake on the table", "examples/brushnet/src/test_mask.jpg", 0, [], [Image.open("examples/brushnet/src/test_result.png")]],
+    ["examples/brushnet/src/example_1.jpg", "A man in Chinese traditional clothes", "examples/brushnet/src/example_1_mask.jpg", 1, [], [Image.open("examples/brushnet/src/example_1_result.png")]],
+    ["examples/brushnet/src/example_2.jpg", "a charming woman with dress standing by the sea", "examples/brushnet/src/example_2_mask.jpg", 2, [], [Image.open("examples/brushnet/src/example_2_result.png")]],
+    ["examples/brushnet/src/example_3.jpg", "a cut toy on the table", "examples/brushnet/src/example_3_mask.jpg", 3, [], [Image.open("examples/brushnet/src/example_3_result.png")]],
+    ["examples/brushnet/src/example_4.jpeg", "a car driving in the wild", "examples/brushnet/src/example_4_mask.jpg", 4, [], [Image.open("examples/brushnet/src/example_4_result.png")]],
+    ["examples/brushnet/src/example_5.jpg", "a charming woman wearing dress standing in the dark forest", "examples/brushnet/src/example_5_mask.jpg", 5, [], [Image.open("examples/brushnet/src/example_5_result.png")]],
 ]
+
 
 
 # choose the base model here
@@ -234,12 +240,12 @@ with block:
                 with gr.TabItem("Outputs"):
                     result_gallery = gr.Gallery(label='Output', show_label=False, elem_id="gallery", preview=True)
     with gr.Row():
-        def process_example(input_image, prompt, input_mask, original_image, selected_points): # 
-            return input_image, prompt, input_mask, original_image, []
+        def process_example(input_image, prompt, input_mask, original_image, selected_points,result_gallery): #
+            return input_image, prompt, input_mask, original_image, [], result_gallery
         example = gr.Examples(
             label="Input Example",
             examples=image_examples,
-            inputs=[input_image, prompt, input_mask, original_image, selected_points],
+            inputs=[input_image, prompt, input_mask, original_image, selected_points,result_gallery],
             outputs=[input_image, prompt, input_mask, original_image, selected_points],
             fn=process_example,
             run_on_click=True,
