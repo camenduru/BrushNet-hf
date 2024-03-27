@@ -1,11 +1,11 @@
 ---
 title: BrushNet
-emoji: 🔥
+emoji: ⚡
 colorFrom: yellow
 colorTo: indigo
 sdk: gradio
 python_version: 3.9
-sdk_version: 3.50.2
+sdk_version: 3.50.0
 app_file: app.py
 pinned: false
 license: apache-2.0
@@ -48,4 +48,3 @@ Keywords: Image Inpainting, Diffusion Models, Image Generation
 <span id="acknowledgement"></span>
 
 Our code is modified based on [diffusers](https://github.com/huggingface/diffusers), thanks to all the contributors!
-
