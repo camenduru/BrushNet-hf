@@ -17,7 +17,7 @@ import random
 import spaces
 import gradio as gr
 
-mobile_sam = sam_model_registry['vit_h'](checkpoint='data/ckpt/sam_vit_h_4b8939.pth').to("cuda")
+mobile_sam = sam_model_registry['vit_h'](checkpoint='data/ckpt/sam_vit_h_4b8939.pth')
 mobile_sam.eval()
 mobile_predictor = SamPredictor(mobile_sam)
 colors = [(255, 0, 0), (0, 255, 0)]
@@ -269,6 +269,7 @@ with block:
         for p, l in sel_pix:
             points.append(p)
             labels.append(l)
+        mobile_predictor=mobile_predictor.to("cuda")
         mobile_predictor.set_image(img if isinstance(img, np.ndarray) else np.array(img))
         with torch.no_grad():
             masks, _, _ = mobile_predictor.predict(point_coords=np.array(points), point_labels=np.array(labels), multimask_output=False)
