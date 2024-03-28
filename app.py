@@ -1,12 +1,4 @@
-##!/usr/bin/python3
-# -*- coding: utf-8 -*-
 import os
-
-print("Installing correct gradio version...")
-os.system("pip uninstall -y gradio")
-os.system("pip install gradio==3.50.0")
-print("Installing Finished!")
-
 import cv2
 from PIL import Image
 import numpy as np
@@ -15,7 +7,6 @@ import torch
 from diffusers import StableDiffusionBrushNetPipeline, BrushNetModel, UniPCMultistepScheduler
 import random
 import gradio as gr
-import spaces
 
 mobile_sam = sam_model_registry['vit_h'](checkpoint='data/ckpt/sam_vit_h_4b8939.pth')
 mobile_sam.eval()
@@ -74,7 +65,6 @@ def resize_image(input_image, resolution):
     img = cv2.resize(input_image, (W, H), interpolation=cv2.INTER_LANCZOS4 if k > 1 else cv2.INTER_AREA)
     return img
 
-@spaces.GPU
 def process(input_image, 
     original_image, 
     original_mask, 
@@ -147,12 +137,7 @@ def process(input_image,
 
     return image
 
-block = gr.Blocks(
-        theme=gr.themes.Soft(
-             radius_size=gr.themes.sizes.radius_none,
-             text_size=gr.themes.sizes.text_md
-         )
-        ).queue()
+block = gr.Blocks(theme=gr.themes.Soft(radius_size=gr.themes.sizes.radius_none, text_size=gr.themes.sizes.text_md)).queue()
 with block:
     with gr.Row():
         with gr.Column():
@@ -346,4 +331,4 @@ with block:
     run_button.click(fn=process, inputs=ips, outputs=[result_gallery])
 
 
-block.launch()
+block.launch(share=True)
